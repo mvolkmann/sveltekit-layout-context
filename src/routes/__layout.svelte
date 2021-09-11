@@ -4,6 +4,11 @@
   export async function load({fetch, page}: LoadInput): Promise<LoadOutput> {
     const {pageNum} = page.params;
     console.log('__layout.svelte load: pageNum =', pageNum);
+
+    // Need to reference page.path so SvelteKit
+    // knows to rerun this any time that changes.
+    console.log('__layout.svelte load: page.path =', page.path);
+
     if (!pageNum) return {};
 
     const res = await fetch('/api/data');

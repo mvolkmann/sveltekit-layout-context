@@ -5,7 +5,11 @@
     console.log('[pageNum].svelte load: context =', context);
     const pageNum = Number(page.params.pageNum);
     console.log('[pageNum].svelte load: pageNum =', pageNum);
+
+    // One way to trigger the error page.
     if (pageNum > 3) return {error: 'bad page', status: 404};
+
+    // Another way to trigger the error page.
     if (pageNum < 1) throw new Error('non-positive page');
     const props = {pageNum, timestamp: context.timestamp};
     return {props, maxage: 10};
