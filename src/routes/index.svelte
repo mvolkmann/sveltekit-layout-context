@@ -1,5 +1,7 @@
-<nav>
+<!--nav>
   <a href="/page/1">Page 1</a>
   <a href="/page/2">Page 2</a>
   <a href="/page/3">Page 3</a>
-</nav>
+</nav-->
+
+<h1>Home</h1>
