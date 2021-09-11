@@ -3,8 +3,10 @@
 
   export async function load({context, page}: LoadInput): Promise<LoadOutput> {
     console.log('[pageNum].svelte load: context =', context);
-    const {pageNum} = page.params;
+    const pageNum = Number(page.params.pageNum);
     console.log('[pageNum].svelte load: pageNum =', pageNum);
+    if (pageNum > 3) return {error: 'bad page', status: 404};
+    if (pageNum < 1) throw new Error('non-positive page');
     const props = {pageNum, timestamp: context.timestamp};
     return {props, maxage: 10};
   }
