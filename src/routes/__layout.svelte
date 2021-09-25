@@ -15,7 +15,7 @@
     if (res.ok) {
       const data = await res.json();
       console.log('__layout.svelte load: data =', data);
-      return {context: data};
+      return {stuff: data};
     }
 
     const error = await res.text();

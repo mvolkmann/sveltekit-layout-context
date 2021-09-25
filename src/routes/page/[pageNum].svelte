@@ -1,8 +1,8 @@
 <script context="module" lang="ts">
   import type {LoadInput, LoadOutput} from '@sveltejs/kit';
 
-  export async function load({context, page}: LoadInput): Promise<LoadOutput> {
-    console.log('[pageNum].svelte load: context =', context);
+  export async function load({page, stuff}: LoadInput): Promise<LoadOutput> {
+    console.log('[pageNum].svelte load: stuff =', stuff);
     const pageNum = Number(page.params.pageNum);
     console.log('[pageNum].svelte load: pageNum =', pageNum);
 
@@ -11,7 +11,7 @@
 
     // Another way to trigger the error page.
     if (pageNum < 1) throw new Error('non-positive page');
-    const props = {pageNum, timestamp: context.timestamp};
+    const props = {pageNum, timestamp: stuff.timestamp};
     return {props, maxage: 10};
   }
 </script>
